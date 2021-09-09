@@ -1,8 +1,11 @@
 library(OECD)
+library(writexl)
 
 dataset_name <- "HSL"
 data_directory <- "www"
+dir.create(data_directory)
 data_subdirectory <- "scotland"
+dir.create(file.path(data_directory, data_subdirectory))
 
 dataset <- OECD::get_dataset(dataset_name)
 
@@ -11,3 +14,4 @@ dataset <- OECD::get_dataset(dataset_name)
 
 save_file_path <- paste0(data_directory, "//", data_subdirectory, "//", dataset_name, ".csv")
 write.csv(dataset, save_file_path)
+
